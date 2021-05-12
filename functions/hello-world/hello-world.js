@@ -17,7 +17,7 @@ const handler = async (event, context) => {
         body: challenge,
       };
     }
-    let body = JSON.parse(req.body);
+    let body = JSON.parse(event.body);
     console.log(body);
 
     console.log(typeof body);
