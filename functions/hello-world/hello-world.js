@@ -44,7 +44,10 @@ const handler = async (event, context) => {
           handlePostback(sender_psid, webhook_event.postback);
         }
       });
-
+      return {
+        statusCode: 200,
+        body: 'EVENT_RECEIVED',
+      };
       // Return a '200 OK' response to all events
       // res.status(200).send('EVENT_RECEIVED');
     }
