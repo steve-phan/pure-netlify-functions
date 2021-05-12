@@ -20,7 +20,7 @@ const handler = async (event, context) => {
     console.log(event.body);
 
     // Check the webhook event is from a Page subscription
-    if (event.body && event.body.object === 'page') {
+    if (event.body.object === 'page') {
       console.log('we have body');
       let body = req.body;
       // Iterate over each entry - there may be multiple if batched
