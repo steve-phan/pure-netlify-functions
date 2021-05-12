@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "vUnAmp",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^9.0.2"
+  }
 }
