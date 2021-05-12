@@ -114,7 +114,8 @@ function callSendAPI(sender_psid, response) {
   };
   console.log('starting ...send http request ....');
   // Send the HTTP request to the Messenger Platform
-  https.request(
+
+  https.get(
     {
       uri: 'https://graph.facebook.com/v7.0/me/messages',
       qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
