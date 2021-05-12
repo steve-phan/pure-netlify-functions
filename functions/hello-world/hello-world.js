@@ -1,6 +1,7 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 require('dotenv').config();
 const handler = async (event, context) => {
+  console.log('this is a log');
   let VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
   try {
     const subject = event.queryStringParameters.name || 'World';
