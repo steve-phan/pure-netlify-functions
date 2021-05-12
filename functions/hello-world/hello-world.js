@@ -8,7 +8,7 @@ const handler = async (event, context) => {
     if (mode === 'subscribe' && token === 'hello@328adasdasdadadad') {
       // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
-      res.status(200).send(challenge);
+      // res.status(200).send(challenge);
       return {
         statusCode: 200,
         body: JSON.stringify(challenge),
