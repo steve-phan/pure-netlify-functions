@@ -1,7 +1,6 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 require('dotenv').config();
 const handler = async (event, context) => {
-  console.log('this is a log');
   let VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
   try {
     const subject = event.queryStringParameters.name || 'World';
@@ -18,9 +17,11 @@ const handler = async (event, context) => {
         body: challenge,
       };
     }
+    console.log('try to get body');
 
     // Check the webhook event is from a Page subscription
     if (event.body && event.body.object === 'page') {
+      console.log('we have body');
       let body = req.body;
       // Iterate over each entry - there may be multiple if batched
       body.entry.forEach(function (entry) {
