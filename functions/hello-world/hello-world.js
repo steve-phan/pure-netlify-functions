@@ -18,6 +18,8 @@ const handler = async (event, context) => {
       };
     }
     console.log(event.body);
+    console.log(event.body.object);
+    console.log(typeof event.body.object);
 
     // Check the webhook event is from a Page subscription
     if (event.body.object === 'page') {
