@@ -1,19 +1,23 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
+require('dotenv').config();
 const handler = async (event, context) => {
+  let VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
   try {
     const subject = event.queryStringParameters.name || 'World';
     let mode = event.queryStringParameters['hub.mode'];
     let token = event.queryStringParameters['hub.verify_token'];
     let challenge = event.queryStringParameters['hub.challenge'];
-    if (mode === 'subscribe' && token === 'hello@328adasdasdadadad') {
+    let response;
+    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
       // res.status(200).send(challenge);
-      return {
+      response = {
         statusCode: 200,
-        body: JSON.stringify(challenge),
+        body: challenge,
       };
     }
+    return response;
     // return {
     //   statusCode: 200,
     //   body: JSON.stringify({ messenger: 'this is default ' }),
