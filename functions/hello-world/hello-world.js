@@ -17,14 +17,14 @@ const handler = async (event, context) => {
         body: challenge,
       };
     }
-    console.log(event.body);
-    console.log(event.body.object);
-    console.log(typeof event.body.object);
+    let body = JSON.parse(req.body);
+    console.log(body);
+
+    console.log(typeof body);
 
     // Check the webhook event is from a Page subscription
-    if (event.body.object === 'page') {
+    if (body.object === 'page') {
       console.log('we have body');
-      let body = req.body;
       // Iterate over each entry - there may be multiple if batched
       body.entry.forEach(function (entry) {
         // Get the webhook event. entry.messaging is an array, but
