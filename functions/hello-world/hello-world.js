@@ -17,7 +17,7 @@ const handler = async (event, context) => {
         body: challenge,
       };
     }
-    console.log('try to get body');
+    console.log(event.body);
 
     // Check the webhook event is from a Page subscription
     if (event.body && event.body.object === 'page') {
