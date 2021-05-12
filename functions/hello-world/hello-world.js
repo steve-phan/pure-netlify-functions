@@ -1,5 +1,6 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 require('dotenv').config();
+const https = require('https');
 const handler = async (event, context) => {
   let VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
   try {
@@ -113,7 +114,7 @@ function callSendAPI(sender_psid, response) {
   };
   console.log('starting ...send http request ....');
   // Send the HTTP request to the Messenger Platform
-  request(
+  https.request(
     {
       uri: 'https://graph.facebook.com/v7.0/me/messages',
       qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -128,4 +129,19 @@ function callSendAPI(sender_psid, response) {
       }
     }
   );
+  // request(
+  //   {
+  //     uri: 'https://graph.facebook.com/v7.0/me/messages',
+  //     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+  //     method: 'POST',
+  //     json: request_body,
+  //   },
+  //   (err, res, body) => {
+  //     if (!err) {
+  //       console.log('message sent!');
+  //     } else {
+  //       console.error('Unable to send message:' + err);
+  //     }
+  //   }
+  // );
 }
