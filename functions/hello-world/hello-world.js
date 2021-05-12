@@ -14,10 +14,10 @@ const handler = async (event, context) => {
         body: JSON.stringify(challenge),
       };
     }
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ messenger: 'this is default ' }),
-    };
+    // return {
+    //   statusCode: 200,
+    //   body: JSON.stringify({ messenger: 'this is default ' }),
+    // };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
   }
