@@ -3,9 +3,9 @@ const handler = async (event, context) => {
   console.log(event);
   try {
     const subject = event.queryStringParameters.name || 'World';
-    let mode = event.query['hub.mode'];
-    let token = event.query['hub.verify_token'];
-    let challenge = event.query['hub.challenge'];
+    let mode = event.queryStringParameters['hub.mode'];
+    let token = event.queryStringParameters['hub.verify_token'];
+    let challenge = event.queryStringParameters['hub.challenge'];
     if (mode === 'subscribe' && token === 'hello@328adasdasdadadad') {
       // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
@@ -15,6 +15,10 @@ const handler = async (event, context) => {
         body: JSON.stringify(challenge),
       };
     }
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ messenger: 'this is default ' }),
+    };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
   }
